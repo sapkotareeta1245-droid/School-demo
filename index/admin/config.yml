@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: sapkotareeta1245-droid/Schiik-demo
   branch: main
 
 media_folder: "images"
