@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us & Location — Mohanmaya Secondary School</title>
+<meta name="description" content="Get in touch with Mohanmaya Secondary School — address, phone, hours, map, and message form.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  :root{ --navy:#0F172A; --royal:#1E3A8A; --amber:#F59E0B; --slate:#F8FAFC; --tint:#EEF3FF; }
+  body{ font-family:'Plus Jakarta Sans',sans-serif; color:var(--navy); background:var(--slate); }
+  h1,h2,h3,.font-head{ font-family:'Space Grotesk',sans-serif; }
+  *{ scroll-behavior:smooth; }
+
+  .eyebrow{ font-weight:700; letter-spacing:.18em; text-transform:uppercase; font-size:.72rem; color:var(--amber); }
+  .btn-amber{ background:var(--amber); color:var(--navy); font-weight:700; transition:.25s ease; box-shadow:0 8px 22px -8px rgba(245,158,11,.55); }
+  .btn-amber:hover{ transform:translateY(-2px); box-shadow:0 12px 26px -8px rgba(245,158,11,.65); }
+  .btn-outline{ border:1.5px solid var(--royal); color:var(--royal); font-weight:600; transition:.25s ease; }
+  .btn-outline:hover{ background:var(--royal); color:#fff; transform:translateY(-2px); }
+
+  .navlink{ position:relative; }
+  .navlink::after{ content:""; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:var(--amber); transition:width .3s ease; }
+  .navlink:hover::after, .navlink.active::after{ width:100%; }
+  .navlink.active{ color:var(--royal); }
+
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none;} }
+
+  .form-input{ border:1.5px solid rgba(15,23,42,.15); background:#fff; transition:.2s ease; }
+  .form-input:focus{ outline:none; border-color:var(--amber); box-shadow:0 0 0 4px rgba(245,158,11,.18); }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+
+  #toast{ transition:opacity .4s ease, transform .4s ease; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ============ NAV ============ -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-black/5 transition-shadow">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <span class="w-11 h-11 rounded-full flex items-center justify-center shrink-0" style="background:var(--navy);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.8"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg>
+      </span>
+      <span class="leading-tight">
+        <span class="block font-head font-bold text-lg text-[var(--navy)]">Mohanmaya</span>
+        <span class="block text-[0.65rem] tracking-[.15em] uppercase font-semibold" style="color:var(--amber);">Secondary School</span>
+      </span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-9 text-[0.92rem] font-medium text-[var(--navy)]/80">
+      <a href="index.html" class="navlink">Home</a>
+      <a href="academics.html" class="navlink">Academics</a>
+      <a href="admissions.html" class="navlink">Admissions</a>
+      <a href="contact.html" class="navlink active">Contact Us</a>
+    </nav>
+    <a href="admissions.html" class="hidden lg:inline-flex btn-amber px-6 py-2.5 rounded-full text-sm">Enroll Now / Inquire</a>
+    <button id="menuBtn" aria-label="Open menu" aria-expanded="false" class="lg:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5">
+      <span class="block w-6 h-[2px] bg-[var(--navy)]"></span>
+      <span class="block w-6 h-[2px] bg-[var(--navy)]"></span>
+      <span class="block w-6 h-[2px] bg-[var(--navy)]"></span>
+    </button>
+  </div>
+  <div id="mobileMenu" class="lg:hidden hidden flex-col bg-white border-t border-black/5 px-6 py-6 gap-5 text-lg font-medium">
+    <a href="index.html" class="py-1">Home</a>
+    <a href="academics.html" class="py-1">Academics</a>
+    <a href="admissions.html" class="py-1">Admissions</a>
+    <a href="contact.html" class="py-1 text-[var(--royal)]">Contact Us</a>
+    <a href="admissions.html" class="btn-amber text-center rounded-full py-3 mt-2">Enroll Now / Inquire</a>
+  </div>
+</header>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="pt-32 pb-14 md:pt-40 md:pb-16" style="background:linear-gradient(180deg,#fff 0%,var(--tint) 100%);">
+  <div class="max-w-4xl mx-auto px-6 md:px-10 text-center reveal">
+    <p class="eyebrow mb-4">Get In Touch</p>
+    <h1 class="font-head font-bold text-4xl md:text-5xl text-[var(--navy)] leading-tight">We are here to support your education journey.</h1>
+  </div>
+</section>
+
+<!-- ============ CONTACT DETAILS + MAP ============ -->
+<section class="py-16 md:py-20">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 grid lg:grid-cols-2 gap-10">
+
+    <div class="reveal bg-white rounded-2xl border border-black/5 shadow-sm p-8 md:p-10 flex flex-col justify-between">
+      <div class="space-y-7">
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 shrink-0 rounded-full flex items-center justify-center" style="background:var(--tint);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--royal)" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0112 2a7 7 0 017 7.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-[var(--navy)]">Ram Chowk Rd, Birtamod 57204, Jhapa, Nepal</p>
+            <p class="text-sm text-[var(--navy)]/50 mt-0.5">Plus Code: JXRC+24 Birtamod</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 shrink-0 rounded-full flex items-center justify-center" style="background:var(--tint);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--royal)" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.13.99.36 1.96.7 2.9a2 2 0 01-.45 2.11L8.1 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.11-.45c.94.34 1.91.57 2.9.7A2 2 0 0122 16.9z"/></svg>
+          </div>
+          <a href="tel:+97723533652" class="font-semibold text-[var(--navy)] hover:text-[var(--royal)] transition-colors">+977 23-533652</a>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 shrink-0 rounded-full flex items-center justify-center" style="background:var(--tint);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--royal)" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-[var(--navy)]">Sunday – Friday: 6:00 AM – 4:00 PM</p>
+            <p class="text-sm text-[var(--navy)]/50 mt-0.5">Saturday: Closed</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 shrink-0 rounded-full flex items-center justify-center" style="background:var(--tint);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--royal)" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c2.8 2.9 2.8 17.1 0 20M12 2c-2.8 2.9-2.8 17.1 0 20"/></svg>
+          </div>
+          <a href="http://mohanmaya.edu.np/" target="_blank" rel="noopener" class="font-semibold text-[var(--navy)] hover:text-[var(--royal)] transition-colors">mohanmaya.edu.np</a>
+        </div>
+      </div>
+
+      <a href="https://www.google.com/maps/search/?api=1&query=JXRC%2B24+Birtamod" target="_blank" rel="noopener" class="btn-outline inline-flex justify-center mt-9 px-7 py-3 rounded-full text-sm">Get Directions</a>
+    </div>
+
+    <div class="reveal rounded-2xl overflow-hidden shadow-lg border border-black/5 h-[380px] lg:h-auto" style="transition-delay:.1s">
+      <iframe
+        title="Map showing Mohanmaya Secondary School location on Ram Chowk Road, Birtamod"
+        src="https://www.google.com/maps?q=JXRC%2B24+Birtamod,+Jhapa,+Nepal&output=embed"
+        width="100%" height="100%" style="border:0; min-height:380px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MESSAGE FORM ============ -->
+<section class="py-16 md:py-20" style="background:var(--tint);">
+  <div class="max-w-2xl mx-auto px-6 md:px-10">
+    <div class="text-center mb-10 reveal">
+      <p class="eyebrow mb-4">Send a Message</p>
+      <h2 class="font-head font-bold text-3xl md:text-4xl text-[var(--navy)]">Have a question? Write to us.</h2>
+    </div>
+
+    <form id="contactForm" class="reveal bg-white rounded-2xl shadow-sm border border-black/5 p-7 md:p-10 space-y-5">
+      <div>
+        <label for="cName" class="block text-sm font-semibold text-[var(--navy)]/80 mb-1.5">Name</label>
+        <input required id="cName" name="name" type="text" placeholder="Your name" class="form-input w-full rounded-lg px-4 py-3">
+      </div>
+      <div>
+        <label for="cEmail" class="block text-sm font-semibold text-[var(--navy)]/80 mb-1.5">Email</label>
+        <input required id="cEmail" name="email" type="email" placeholder="you@example.com" class="form-input w-full rounded-lg px-4 py-3">
+      </div>
+      <div>
+        <label for="cSubject" class="block text-sm font-semibold text-[var(--navy)]/80 mb-1.5">Subject</label>
+        <input required id="cSubject" name="subject" type="text" placeholder="What is this about?" class="form-input w-full rounded-lg px-4 py-3">
+      </div>
+      <div>
+        <label for="cMessage" class="block text-sm font-semibold text-[var(--navy)]/80 mb-1.5">Message</label>
+        <textarea required id="cMessage" name="message" rows="5" placeholder="Write your message here" class="form-input w-full rounded-lg px-4 py-3"></textarea>
+      </div>
+      <button type="submit" class="btn-amber w-full rounded-full py-4 text-base mt-2">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 opacity-0 translate-y-4 pointer-events-none px-6 py-4 rounded-xl shadow-2xl z-50 text-sm font-medium text-white border border-amber-400/30" style="background:var(--navy);">
+  Message sent — we'll get back to you soon.
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-white border-t border-black/5">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-14 grid sm:grid-cols-3 gap-10">
+    <div>
+      <p class="font-head font-bold text-lg text-[var(--navy)] mb-2">Mohanmaya Secondary School</p>
+      <p class="text-sm text-[var(--navy)]/55">Birtamod, Jhapa, Nepal</p>
+    </div>
+    <div>
+      <p class="text-xs font-bold uppercase tracking-wider text-[var(--navy)]/40 mb-3">Quick Links</p>
+      <div class="flex flex-col gap-2 text-sm text-[var(--navy)]/65">
+        <a href="index.html" class="hover:text-[var(--royal)]">Home</a>
+        <a href="academics.html" class="hover:text-[var(--royal)]">Academics</a>
+        <a href="admissions.html" class="hover:text-[var(--royal)]">Admissions</a>
+        <a href="contact.html" class="hover:text-[var(--royal)]">Contact</a>
+      </div>
+    </div>
+    <div>
+      <p class="text-xs font-bold uppercase tracking-wider text-[var(--navy)]/40 mb-3">Contact</p>
+      <p class="text-sm text-[var(--navy)]/65 mb-1">Ram Chowk Rd, Birtamod 57204, Jhapa</p>
+      <a href="tel:+97723533652" class="text-sm text-[var(--royal)] font-semibold hover:underline">+977 23-533652</a>
+    </div>
+  </div>
+  <div class="border-t border-black/5 py-5 text-center text-xs text-[var(--navy)]/40">© 2026 Mohanmaya Secondary School. All rights reserved.</div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('flex');
+    mobileMenu.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('shadow-md', window.scrollY > 12));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const form = document.getElementById('contactForm');
+  const toast = document.getElementById('toast');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    toast.style.opacity = '1';
+    toast.style.transform = 'translate(-50%, 0)';
+    form.reset();
+    setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translate(-50%, 1rem)'; }, 3800);
+  });
+</script>
+</body>
+</html>

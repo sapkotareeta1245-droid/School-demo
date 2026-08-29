@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admissions & Student Life — Mohanmaya Secondary School</title>
+<meta name="description" content="How to apply to Mohanmaya Secondary School — admission process, eligibility documents, and inquiry form.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  :root{ --navy:#0F172A; --royal:#1E3A8A; --amber:#F59E0B; --slate:#F8FAFC; --tint:#EEF3FF; }
+  body{ font-family:'Plus Jakarta Sans',sans-serif; color:var(--navy); background:var(--slate); }
+  h1,h2,h3,.font-head{ font-family:'Space Grotesk',sans-serif; }
+  *{ scroll-behavior:smooth; }
+
+  .eyebrow{ font-weight:700; letter-spacing:.18em; text-transform:uppercase; font-size:.72rem; color:var(--amber); }
+  .btn-amber{ background:var(--amber); color:var(--navy); font-weight:700; transition:.25s ease; box-shadow:0 8px 22px -8px rgba(245,158,11,.55); }
+  .btn-amber:hover{ transform:translateY(-2px); box-shadow:0 12px 26px -8px rgba(245,158,11,.65); }
+  .btn-outline{ border:1.5px solid var(--royal); color:var(--royal); font-weight:600; transition:.25s ease; }
+  .btn-outline:hover{ background:var(--royal); color:#fff; transform:translateY(-2px); }
+
+  .navlink{ position:relative; }
+  .navlink::after{ content:""; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:var(--amber); transition:width .3s ease; }
+  .navlink:hover::after, .navlink.active::after{ width:100%; }
+  .navlink.active{ color:var(--royal); }
+
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none;} }
+
+  .form-input{ border:1.5px solid rgba(15,23,42,.15); background:#fff; transition:.2s ease; }
+  .form-input:focus{ outline:none; border-color:var(--amber); box-shadow:0 0 0 4px rgba(245,158,11,.18); }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+
+  /* stepper */
+  .step-line{ background:linear-gradient(180deg, var(--royal), rgba(30,58,138,.15)); }
+  .step-num{ background:var(--royal); color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:700; }
+
+  /* accordion */
+  .acc-trigger[aria-expanded="true"] .acc-icon{ transform:rotate(45deg); }
+  .acc-icon{ transition:transform .25s ease; }
+  .acc-panel{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
+
+  #toast{ transition:opacity .4s ease, transform .4s ease; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ============ NAV ============ -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-black/5 transition-shadow">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <span class="w-11 h-11 rounded-full flex items-center justify-center shrink-0" style="background:var(--navy);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.8"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg>
+      </span>
+      <span class="leading-tight">
+        <span class="block font-head font-bold text-lg text-[var(--navy)]">Mohanmaya</span>
+        <span class="block text-[0.65rem] tracking-[.15em] uppercase font-semibold" style="color:var(--amber);">Secondary School</span>
+      </span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-9 text-[0.92rem] font-medium text-[var(--navy)]/80">
+      <a href="index.html" class="navlink">Home</a>
+      <a href="academics.html" class="navlink">Academics</a>
+      <a href="admissions.html" class="navlink active">Admissions</a>
+      <a href="contact.html" class="navlink">Contact Us</a>
+    </nav>
+    <a href="#inquiry" class="hidden lg:inline-flex btn-amber px-6 py-2.5 rounded-full text-sm">Enroll Now / Inquire</a>
+    <button id="menuBtn" aria-label="Open menu" aria-expanded="false" class="lg:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5">
+      <span class="block w-6 h-[2px] bg-[var(--navy)]"></span>
+      <span class="block w-6 h-[2px] bg-[var(--navy)]"></span>
+      <span class="block w-6 h-[2px] bg-[var(--navy)]"></span>
+    </button>
+  </div>
+  <div id="mobileMenu" class="lg:hidden hidden flex-col bg-white border-t border-black/5 px-6 py-6 gap-5 text-lg font-medium">
+    <a href="index.html" class="py-1">Home</a>
+    <a href="academics.html" class="py-1">Academics</a>
+    <a href="admissions.html" class="py-1 text-[var(--royal)]">Admissions</a>
+    <a href="contact.html" class="py-1">Contact Us</a>
+    <a href="#inquiry" class="btn-amber text-center rounded-full py-3 mt-2">Enroll Now / Inquire</a>
+  </div>
+</header>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="pt-32 pb-16 md:pt-40 md:pb-20" style="background:linear-gradient(180deg,#fff 0%,var(--tint) 100%);">
+  <div class="max-w-4xl mx-auto px-6 md:px-10 text-center reveal">
+    <p class="eyebrow mb-4">Admissions &amp; Student Life</p>
+    <h1 class="font-head font-bold text-4xl md:text-5xl text-[var(--navy)] leading-tight">A clear, guided path into the Mohanmaya family.</h1>
+  </div>
+</section>
+
+<!-- ============ ADMISSION PROCESS — stepper ============ -->
+<section class="py-20 md:py-24">
+  <div class="max-w-3xl mx-auto px-6 md:px-10">
+    <div class="text-center mb-14 reveal">
+      <p class="eyebrow mb-4">The Process</p>
+      <h2 class="font-head font-bold text-3xl md:text-4xl text-[var(--navy)]">Four steps to enrollment</h2>
+    </div>
+
+    <ol class="relative">
+      <li class="reveal flex gap-6 pb-12 relative">
+        <div class="absolute left-6 top-12 bottom-0 w-px step-line"></div>
+        <span class="step-num w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-lg">1</span>
+        <div class="pt-1.5">
+          <h3 class="font-head font-bold text-xl mb-1.5">Submit Online Inquiry or Visit Campus</h3>
+          <p class="text-[var(--navy)]/60 leading-relaxed">Reach out through the form below or come speak with our admissions office directly.</p>
+        </div>
+      </li>
+      <li class="reveal flex gap-6 pb-12 relative" style="transition-delay:.06s">
+        <div class="absolute left-6 top-12 bottom-0 w-px step-line"></div>
+        <span class="step-num w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-lg">2</span>
+        <div class="pt-1.5">
+          <h3 class="font-head font-bold text-xl mb-1.5">Entrance Assessment / Interview</h3>
+          <p class="text-[var(--navy)]/60 leading-relaxed">A short assessment helps us place your child at the right level from day one.</p>
+        </div>
+      </li>
+      <li class="reveal flex gap-6 pb-12 relative" style="transition-delay:.12s">
+        <div class="absolute left-6 top-12 bottom-0 w-px step-line"></div>
+        <span class="step-num w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-lg">3</span>
+        <div class="pt-1.5">
+          <h3 class="font-head font-bold text-xl mb-1.5">Document Verification</h3>
+          <p class="text-[var(--navy)]/60 leading-relaxed">Bring the required documents for review — see the checklist below.</p>
+        </div>
+      </li>
+      <li class="reveal flex gap-6 relative" style="transition-delay:.18s">
+        <span class="step-num w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-lg">4</span>
+        <div class="pt-1.5">
+          <h3 class="font-head font-bold text-xl mb-1.5">Final Enrollment Confirmation</h3>
+          <p class="text-[var(--navy)]/60 leading-relaxed">Once confirmed, your child is officially part of the Mohanmaya family.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ ELIGIBILITY ACCORDION ============ -->
+<section class="py-20 md:py-24" style="background:var(--tint);">
+  <div class="max-w-3xl mx-auto px-6 md:px-10">
+    <div class="text-center mb-12 reveal">
+      <p class="eyebrow mb-4">Before You Apply</p>
+      <h2 class="font-head font-bold text-3xl md:text-4xl text-[var(--navy)]">Eligibility &amp; document checklist</h2>
+    </div>
+
+    <div class="space-y-3">
+      <div class="reveal bg-white rounded-xl border border-black/5 overflow-hidden">
+        <button class="acc-trigger w-full flex items-center justify-between px-6 py-5 text-left font-head font-bold text-lg" aria-expanded="true">
+          Marksheets / Grade Sheets
+          <span class="acc-icon text-2xl text-[var(--amber)] leading-none">+</span>
+        </button>
+        <div class="acc-panel" style="max-height:200px;">
+          <p class="px-6 pb-5 text-[var(--navy)]/60 leading-relaxed">Most recent grade sheet or marksheet from the student's previous school, for placement review.</p>
+        </div>
+      </div>
+
+      <div class="reveal bg-white rounded-xl border border-black/5 overflow-hidden">
+        <button class="acc-trigger w-full flex items-center justify-between px-6 py-5 text-left font-head font-bold text-lg" aria-expanded="false">
+          Transfer Certificate
+          <span class="acc-icon text-2xl text-[var(--amber)] leading-none">+</span>
+        </button>
+        <div class="acc-panel">
+          <p class="px-6 pb-5 text-[var(--navy)]/60 leading-relaxed">An official transfer certificate from the student's current or most recent school.</p>
+        </div>
+      </div>
+
+      <div class="reveal bg-white rounded-xl border border-black/5 overflow-hidden">
+        <button class="acc-trigger w-full flex items-center justify-between px-6 py-5 text-left font-head font-bold text-lg" aria-expanded="false">
+          Birth Certificate
+          <span class="acc-icon text-2xl text-[var(--amber)] leading-none">+</span>
+        </button>
+        <div class="acc-panel">
+          <p class="px-6 pb-5 text-[var(--navy)]/60 leading-relaxed">A copy of the student's birth certificate for identity and age verification.</p>
+        </div>
+      </div>
+
+      <div class="reveal bg-white rounded-xl border border-black/5 overflow-hidden">
+        <button class="acc-trigger w-full flex items-center justify-between px-6 py-5 text-left font-head font-bold text-lg" aria-expanded="false">
+          Passport Photos
+          <span class="acc-icon text-2xl text-[var(--amber)] leading-none">+</span>
+        </button>
+        <div class="acc-panel">
+          <p class="px-6 pb-5 text-[var(--navy)]/60 leading-relaxed">Recent passport-sized photographs for the student's school records and ID card.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INQUIRY FORM ============ -->
+<section id="inquiry" class="py-20 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 grid lg:grid-cols-2 gap-14 items-start">
+    <div class="reveal lg:sticky lg:top-32">
+      <p class="eyebrow mb-4">Get Started</p>
+      <h2 class="font-head font-bold text-4xl text-[var(--navy)] leading-tight mb-6">Submit an admission inquiry</h2>
+      <p class="text-[var(--navy)]/60 text-lg leading-relaxed max-w-md mb-8">Tell us a little about your child and the grade or stream you're considering — our admissions office will follow up directly.</p>
+      <div class="flex items-center gap-3 text-[var(--navy)]/75">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--royal)" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.13.99.36 1.96.7 2.9a2 2 0 01-.45 2.11L8.1 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.11-.45c.94.34 1.91.57 2.9.7A2 2 0 0122 16.9z"/></svg>
+        <a href="tel:+97723533652" class="font-semibold hover:text-[var(--royal)]">+977 23-533652</a>
+      </div>
+    </div>
+
+    <form id="inquiryForm" class="reveal bg-white rounded-2xl shadow-lg border border-black/5 p-7 md:p-10 space-y-5" style="transition-delay:.1s">
+      <div>
+        <label for="studentName" class="block text-sm font-semibold text-[var(--navy)]/80 mb-1.5">Student name</label>
+        <input required id="studentName" name="studentName" type="text" placeholder="Student's full name" class="form-input w-full rounded-lg px-4 py-3">
+      </div>
+      <div>
+        <label for="guardianName" class="block text-sm font-semibold text-[var(--navy)]/80 mb-1.5">Guardian name</label>
+        <input required id="guardianName" name="guardianName" type="text" placeholder="Parent or guardian's name" class="form-input w-full rounded-lg px-4 py-3">
+      </div>
+      <div>
+        <label for="targetGrade" class="block text-sm font-semibold text-[var(--navy)]/80 mb-1.5">Target grade / stream</label>
+        <select id="targetGrade" name="targetGrade" class="form-input w-full rounded-lg px-4 py-3 bg-white">
+          <option>Grade 1–5 (Primary)</option>
+          <option>Grade 6–8 (Lower Secondary)</option>
+          <option>Grade 9–10 (Secondary / SEE)</option>
+          <option>+2 Science</option>
+          <option>+2 Management</option>
+          <option>+2 Humanities</option>
+        </select>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label for="phone" class="block text-sm font-semibold text-[var(--navy)]/80 mb-1.5">Phone number</label>
+          <input required id="phone" name="phone" type="tel" placeholder="98X-XXXXXXX" class="form-input w-full rounded-lg px-4 py-3">
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-semibold text-[var(--navy)]/80 mb-1.5">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" class="form-input w-full rounded-lg px-4 py-3">
+        </div>
+      </div>
+      <div>
+        <label for="message" class="block text-sm font-semibold text-[var(--navy)]/80 mb-1.5">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Anything else we should know?" class="form-input w-full rounded-lg px-4 py-3"></textarea>
+      </div>
+      <button type="submit" class="btn-amber w-full rounded-full py-4 text-base mt-2">Submit Admission Inquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 opacity-0 translate-y-4 pointer-events-none px-6 py-4 rounded-xl shadow-2xl z-50 text-sm font-medium text-white border border-amber-400/30" style="background:var(--navy);">
+  Inquiry received — our admissions office will contact you shortly.
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-white border-t border-black/5">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-14 grid sm:grid-cols-3 gap-10">
+    <div>
+      <p class="font-head font-bold text-lg text-[var(--navy)] mb-2">Mohanmaya Secondary School</p>
+      <p class="text-sm text-[var(--navy)]/55">Birtamod, Jhapa, Nepal</p>
+    </div>
+    <div>
+      <p class="text-xs font-bold uppercase tracking-wider text-[var(--navy)]/40 mb-3">Quick Links</p>
+      <div class="flex flex-col gap-2 text-sm text-[var(--navy)]/65">
+        <a href="index.html" class="hover:text-[var(--royal)]">Home</a>
+        <a href="academics.html" class="hover:text-[var(--royal)]">Academics</a>
+        <a href="admissions.html" class="hover:text-[var(--royal)]">Admissions</a>
+        <a href="contact.html" class="hover:text-[var(--royal)]">Contact</a>
+      </div>
+    </div>
+    <div>
+      <p class="text-xs font-bold uppercase tracking-wider text-[var(--navy)]/40 mb-3">Contact</p>
+      <p class="text-sm text-[var(--navy)]/65 mb-1">Ram Chowk Rd, Birtamod 57204, Jhapa</p>
+      <a href="tel:+97723533652" class="text-sm text-[var(--royal)] font-semibold hover:underline">+977 23-533652</a>
+    </div>
+  </div>
+  <div class="border-t border-black/5 py-5 text-center text-xs text-[var(--navy)]/40">© 2026 Mohanmaya Secondary School. All rights reserved.</div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('flex');
+    mobileMenu.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('shadow-md', window.scrollY > 12));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // accordion
+  document.querySelectorAll('.acc-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panel = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.acc-trigger').forEach(b => {
+        b.setAttribute('aria-expanded','false');
+        b.nextElementSibling.style.maxHeight = '0px';
+      });
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded','true');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // form
+  const form = document.getElementById('inquiryForm');
+  const toast = document.getElementById('toast');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    toast.style.opacity = '1';
+    toast.style.transform = 'translate(-50%, 0)';
+    form.reset();
+    setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translate(-50%, 1rem)'; }, 3800);
+  });
+</script>
+</body>
+</html>
